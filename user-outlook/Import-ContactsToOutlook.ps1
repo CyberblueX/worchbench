@@ -65,7 +65,7 @@ foreach ($entry in $csv_read) {
 }
 
 # Show GridView for contact selection
-$csv_selected = $csv_read | Out-GridView -Title "Welche Kontakte sollen importiert werden?" -PassThru
+$csv_selected = $csv_read | Out-GridView -Title "Welche der $($csv_read.Count) Kontakte sollen importiert werden?" -PassThru
 
 if (!$csv_selected) {
     Write-Host -ForegroundColor Yellow "Keine Kontakte ausgewählt ..."
@@ -82,25 +82,38 @@ $OutlookContacts = $objOutlook.Session.GetDefaultFolder(10).items
 foreach ($csv_contact in $csv_selected) {
     
     # search existing entry by mail
-    $search = $OutlookContacts | Where-Object {$_.Email1Address -eq $csv_contact.$HeaderMail}
+    $search = $OutlookContacts | Where-Object {$_.Email1Address -eq $csv_contact.$HeaderMail -or ($_.FirstName -like $csv_contact.$HeaderFirstName -and $_.LastName -like $csv_contact.$HeaderLastName )}
 
     if ($search) {
         if ($search.count -gt 1) {
             # if found one or more matching, show GridView for selection
             $selected = $search | Out-GridView -PassThru -Title "In welchem Kontakt soll der Geburtstag von $($csv_contact.$HeaderMail) gespeichert werden?"
+        } elseif ($search.Email1Address -ne $csv_contact.$HeaderMail) {
+            # if only name was matching but not the e-mail, show GridView for selection
+            $selected = $search | Out-GridView -PassThru -Title "In welchem Kontakt soll der Geburtstag von $($csv_contact.$HeaderMail) gespeichert werden?"
         } else {
             # if found only one
             $selected = $search
         }
-        Write-Host "Verwende vorhandenen Kontakt für $($csv_contact.$HeaderMail) ... " -NoNewline
+        if (!$selected) {
+            Write-Host -ForegroundColor Yellow "Keine Kontakte ausgewählt ..."
+            return
+        }
+        Write-Host "Verwende für $($csv_contact.$HeaderMail) vorhandenen Kontakt: $($selected.Firstname) $($selected.Lastname) $($selected.Email1Address)... " -NoNewline
 
         # check if not equal
         if ($csv_contact.$HeaderBirthday -ne $selected.Birthday) {
-            $selected.Birthday = $csv_contact..$HeaderBirthday    
+            $selected.Birthday = $csv_contact.$HeaderBirthday
+            if ($csv_contact.$HeaderMail -ne $selected.Email1Address) {
+                $selected.Email1Address = $csv_contact.$HeaderMail
+            }
+            $selected.Save | out-null
+            $selected.Close(0) | out-null
             Write-Host -ForegroundColor Green "OK."
         } else {
             Write-Host -ForegroundColor Blue "Allready there."
         }
+
 
     } else {
         # create new contact entry
@@ -113,12 +126,17 @@ foreach ($csv_contact in $csv_selected) {
         $NewContact.FirstName = $csv_contact.$HeaderFirstName
         $NewContact.LastName =  $csv_contact.$HeaderLastName
         $NewContact.Email1Address = $csv_contact.$HeaderMail
-        $NewContact.Close(0)
+        $NewContact.Save | out-null
+        $NewContact.Close(0) | out-null
 
         Write-Host -ForegroundColor Green "OK."
-
     }
 }
 #$objOutlook.Session.GetDefaultFolder(10).items | Where-Object {$_.Birthday –ne ([datetime]”1/1/4501”)}| Format-Table -AutoSize Fullname, Firstname, Lastname, Birthday, Email1Address
-$objOutlook.Quit()
+$objOutlook.Quit() | out-null
+[System.Runtime.InteropServices.Marshal]::ReleaseComObject($objOutlook) | out-null
+[System.GC]::Collect();
+[System.GC]::WaitForPendingFinalizers();
+[System.GC]::Collect();
+[System.GC]::WaitForPendingFinalizers();
 return
