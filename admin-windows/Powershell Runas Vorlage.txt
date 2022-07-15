@@ -1,0 +1,2 @@
+Pfad: 		%system%\WindowsPowerShell\v1.0\powershell.exe
+Parameter:	Start-Process 'FilePath' -Verb runas

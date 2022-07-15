@@ -1,0 +1,140 @@
+BIOSConfig 1.0
+;
+;     Originally created by BIOS Configuration Utility
+;     Version: 4.0.18.1
+;     Date="2018/06/12" Time="21:38:44" UTC="2"
+Select Language
+	English
+	*Deutsch
+	Espanol
+	Italiano
+	Francais
+	Japanese
+	Portugues
+	Dansk
+	Svenska
+	Nederlands
+	Norsk
+	Suomi
+	Simplified Chinese
+	Traditional Chinese
+Select Keyboard Layout
+	English
+	*Deutsch
+	Espanol
+	Italiano
+	Francais
+	Japanese
+	Portugues
+	Dansk
+	Svenska
+	Nederlands
+	Norsk
+	Suomi
+	Simplified Chinese
+	Traditional Chinese
+Ownership Tag
+	Company Name
+Network Server Mode
+	*Disable
+	Enable
+Setup Browse Mode
+	*Disable
+	Enable
+Password prompt on F9 F11 & F12
+	*Enable
+	Disable
+Num Lock State at Power-On
+	Off
+	*On
+AMT
+	Enable
+	*Disable
+Update BIOS via Network
+	*Disable
+	Enable
+Automatic BIOS Update Setting
+	*Disable
+	Install all updates automatically
+	Install only important updates automatically
+	Let user decide whether to install updates
+Prompt for Admin password on F9 (Boot Menu)
+	Disable
+	*Enable
+Prompt for Admin password on F11 (System Recovery)
+	Disable
+	*Enable
+Prompt for Admin password on F12 (Network Boot)
+	Disable
+	*Enable
+Fast Boot
+	*Disable
+	Enable
+NumLock on at boot
+	Disable
+	*Enable
+Native OS Firmware Update Service
+	Disable
+	*Enable
+BIOS Rollback Policy
+	*Unrestricted Rollback to older BIOS
+	Restricted Rollback to older BIOS
+Clear password jumper
+	Ignore
+	*Honor
+Prompt for Admin authentication on F9 (Boot Menu)
+	Disable
+	*Enable
+Prompt for Admin authentication on F11 (System Recovery)
+	Disable
+	*Enable
+Prompt for Admin authentication on F12 (Network Boot)
+	Disable
+	*Enable
+Prompt for Admin authentication on Capsule Update
+	*Disable
+	Enable
+BIOS Administrator visible at Power-on Authentication
+	Disable
+	*Enable
+TPM Device
+	Hidden
+	*Available
+TPM State
+	Disable
+	*Enable
+Clear TPM
+	*No
+	On next boot
+TPM Activation Policy
+	F1 to Boot
+	Allow user to reject
+	*No prompts
+Fast Boot
+	*Disable
+	Enable
+Audio Alerts During Boot
+	Disable
+	*Enable
+After Power Loss
+	Power Off
+	Power On
+	*Previous State
+CD-ROM Boot
+	*Disable
+	Enable
+USB Storage Boot
+	*Disable
+	Enable
+Network (PXE) Boot
+	Disable
+	*Enable
+Prompt on Memory Size Change
+	Disable
+	*Enable
+Prompt on Fixed Storage Change
+	Disable
+	*Enable
+Enable MS UEFI CA key
+	No
+	*Yes

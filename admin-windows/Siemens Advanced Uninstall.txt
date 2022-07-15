@@ -1,0 +1,15 @@
+CCCA66DD-605E-48F4-904A-6496F69C2531;SIMATIC PLCSIM Advanced SimRT;02.00.0100;17/12/2018
+CCC115DD-8151-4A9C-919E-AAB1D2C70C50;SIMATIC PLCSIM Advanced Driver64;02.00.0100;17/12/2018
+
+MsiExec.exe /X{A5D4DFA8-A032-4A90-9571-4AED3369FD63}
+
+C:\Program Files (x86)\Common Files\Siemens\Automation\Siemens Installer Assistant\406\Start.exe /arpmode /afterreboot EditionKey="HKEY_LOCAL_MACHINE\SOFTWARE\SIEMENS\AUTOMATION\_INSTALLEDSW\PLCSIMADV"
+
+
+"\\gbs.de\ADM\Storage\GSSO\10 Elektro\Siemens\TIA Portal V15.1 GSSO\SIMATIC S7-PLCSIM Advanced V2.0 SP1\Start.exe" /qb REMOVE=ALL REBOOT=Auto
+
+C:\Program Files (x86)\Common Files\Siemens\Automation\Siemens Installer Assistant\406\Start.exe /arpmode /afterreboot EditionKey="HKEY_LOCAL_MACHINE\SOFTWARE\SIEMENS\AUTOMATION\_INSTALLEDSW\PLCSIMADV" /qb REMOVE=ALL REBOOT=Supress
+
+
+C:\Program Files (x86)\Common Files\Siemens\Automation\Siemens Installer Assistant\406\Start.exe
+/arpmode /afterreboot EditionKey="HKEY_LOCAL_MACHINE\SOFTWARE\SIEMENS\AUTOMATION\_INSTALLEDSW\PLCSIMADV" /qn REMOVE=ALL REBOOT=Supress
