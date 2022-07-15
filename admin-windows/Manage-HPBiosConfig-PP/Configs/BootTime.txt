@@ -1,0 +1,32 @@
+English
+;BIOSConfig 1.0
+;
+;     Originally created by CyberblueX on 27.02.2018
+;
+Sunday
+	*Disable
+	Enable
+Monday
+	*Disable
+	Enable
+Tuesday
+	Disable
+	*Enable
+Wednesday
+	*Disable
+	Enable
+Thursday
+	*Disable
+	Enable
+Friday
+	*Disable
+	Enable
+Saturday
+	*Disable
+	Enable
+BIOS Power-On Time (hh:mm)
+	03:50
+BIOS Power-On Hour
+	3
+BIOS Power-On Minute
+	50

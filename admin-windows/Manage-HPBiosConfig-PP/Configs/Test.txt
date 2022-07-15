@@ -1,0 +1,7 @@
+BIOSConfig 1.0
+;
+;     Originally created by BIOS Configuration Utility
+;     Version: 4.0.18.1
+;     Date="2018/06/12" Time="21:38:44" UTC="2"
+Ownership Tag
+	Company Name
